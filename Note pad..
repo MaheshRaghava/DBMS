@@ -80,6 +80,8 @@ select dname from dept where deptno in (select deptno from emp group by deptno h
 select deptno,sum(sal) from emp group by deptno;
 --30) Display all department with Minimum salary and maximum salary?
 select deptno,max(sal),min(sal) from emp group by deptno order by deptno;
+--31) Display all ename, empno, dname, loc from emp, dept table.
+select emp.ename,emp.empno,dept.dname,dept.loc from emp natural join dept;
 
 
 
