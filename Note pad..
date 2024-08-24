@@ -43,7 +43,48 @@ select * from emp where hiredate LIKE '%81';
 --10) Display the records in emp table where MGR in 7698,7566 and sal should be greater than 1500.
 select * from emp where (mgr in 7698 or mgr in 7566) and sal>1500;
 --11) Display all employees where their salary is less then the Ford’s salary?
-select * from emp where sal<(select sal from emp where ename='FORD');
+select ename from emp where sal<(select sal from emp where ename='FORD');
 --12) Display all the records in EMP table along with the rowed.
+--13) Write a query to display current date.
+--14)Display distinct job from emp table.
 select distinct job from emp;
+--15) Write a query that displays the employee’s names with the first letter capitalized and all other letters lowercase for all employees whose name starts with J, A, or M.
 select concat(upper(substr(ename,1,1)),lower(substr(ename,2))) as name from emp where substr(ename,1,1) in ('J','A','M');
+--16) Write a query to display the employee name, department name of all employees who earn a commission.
+select ename,deptno from emp where comm<>0;
+--17) Display the empno, ename, sal, and salary increased by 15%.
+select empno,ename,sal,sal+(15/100)*sal as salary from emp;
+--18) Display employee names and corresponding manager names 
+select ename,job from emp where job='MANAGER';
+--19) Display all the departments where employee salary greater than average salary of that department.
+select dname from dept where deptno in (select deptno from emp group by deptno having max(sal)>avg(sal));
+--20) Display employees where length of ename is 5
+select * from emp where length(ename)=5;
+--21) Display all employees where ename start with J and ends with S
+select * from emp where ename LIKE 'J%S';
+--22) Display all employees where employee does not belong to 10,20,40
+select * from emp where deptno not in (10,20,40);
+--23) Display all employees where jobs does not belong to PRESIDENT and MANAGER.
+select * from emp where job not in ('PRESIDENT','MANAGER');
+--24) Display the maximum salary in the emp table
+select max(sal) from emp;
+--25) Display average salary for job SALESMAN
+select avg(sal) from emp where job='SALESMAN';
+--26) Display all ename where first character could be anything, but second character should be L.
+select ename from emp where ename LIKE '_L%';
+--27) Display nth highest and nth lowest salary in emp table.
+select max(sal),min(sal) from emp;
+--28) Display all the departments where department has 3 employees.
+select dname from dept where deptno in (select deptno from emp group by deptno having count(*)=3);
+--29) Display sum of salary for each department. 
+select deptno,sum(sal) from emp group by deptno;
+--30) Display all department with Minimum salary and maximum salary?
+select deptno,max(sal),min(sal) from emp group by deptno order by deptno;
+
+
+
+
+
+
+
+
