@@ -82,11 +82,28 @@ select deptno,sum(sal) from emp group by deptno;
 select deptno,max(sal),min(sal) from emp group by deptno order by deptno;
 --31) Display all ename, empno, dname, loc from emp, dept table.
 select emp.ename,emp.empno,dept.dname,dept.loc from emp natural join dept;
-
-
-
-
-
-
-
-
+--32) Display all the departments where department does not have any employees
+select dname from dept where deptno in (select deptno from  dept minus select deptno from emp);
+--33) Display all the departments where department does have atleast one employee
+select dname from dept where deptno in (select deptno from  dept intersect select deptno from emp);
+--34)Display all employees those who are not managers.
+select * from emp where empno not in(select e1.empno from emp e1,emp e2 where e1.empno=e2.mgr);
+--35)Display ename, deptno from emp table with format of {ename} belongs to {deptno}.
+--36)Display all the records in emp table. The ename should be lower case. The job first character should be upper case and rest of the character in job field should be lower case.
+select lower(ename),initcap(job) from emp e;
+--37) Create table emp1 and copy the emp table for deptno 10 while creating the table
+--38) Create table emp2 with same structure of emp table. Do not copy the data
+--39) Display all the records for deptno which belongs to employee name JAMES.
+--40) Display all the records in emp table where salary should be less than or equal to ADAMS salary.
+--41) Display all subordinate those who are working under BLAKE.
+--42) Display who is making highest commission.
+--43) Display ename, sal, grade, dname, loc for each employee.
+--44) Display all employee whose location is DALLAS.
+--45) Delete emp records for detpno 10 and 20.
+--46) Delete all employees those are not getting any commission.
+--47) Delete the employees where employee salary is greater than average salary of his/her department.
+--48) Rename the employee name JONES to ANDY
+--49) Increase the salary 5% for employee those who are earning commission less then 1000
+--50) Increase 100$ for employee who is making more then averge salary of his department.
+--51) Increase 1% salary for employee who is making lowest salary in dept 10
+--52) Increase commission 10$ for employees those who are located in NEW YORK.
