@@ -46,6 +46,7 @@ select * from emp where (mgr in 7698 or mgr in 7566) and sal>1500;
 select ename from emp where sal<(select sal from emp where ename='FORD');
 --12) Display all the records in EMP table along with the rowed.
 --13) Write a query to display current date.
+SELECT TRUNC(CURRENT_DATE) AS current_date FROM dual;
 --14)Display distinct job from emp table.
 select distinct job from emp;
 --15) Write a query that displays the employee’s names with the first letter capitalized and all other letters lowercase for all employees whose name starts with J, A, or M.
