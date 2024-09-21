@@ -46,7 +46,7 @@ select * from emp where (mgr in 7698 or mgr in 7566) and sal>1500;
 select ename from emp where sal<(select sal from emp where ename='FORD');
 --12) Display all the records in EMP table along with the rowed.
 --13) Write a query to display current date.
-SELECT TRUNC(CURRENT_DATE) AS current_date FROM dual;
+--SELECT TRUNC(CURRENT_DATE) AS current_date FROM dual;
 --14)Display distinct job from emp table.
 select distinct job from emp;
 --15) Write a query that displays the employee’s names with the first letter capitalized and all other letters lowercase for all employees whose name starts with J, A, or M.
@@ -100,24 +100,24 @@ select deptno from emp where ename = 'JAMES';
 select * from emp where sal <=(select sal from emp where ename = 'ADAMS');
 --41) Display all subordinate those who are working under BLAKE.
 --42) Display who is making highest commission.
-SELECT ename FROM emp WHERE comm = (SELECT MAX(comm) FROM emp);
+select ename from emp where comm = (select max(comm) from emp);
 --43) Display ename, sal, grade, dname, loc for each employee.
-SELECT ename,sal,job,dname,loc FROM emp NATURAL JOIN dept;
+select ename,sal,job,dname,loc from emp NATURAL JOIN dept;
 --44) Display all employee whose location is DALLAS.
-SELECT ename FROM emp NATURAL JOIN dept WHERE loc = 'DALLAS';
+select ename from emp NATURAL JOIN dept where loc = 'DALLAS';
 --45) Delete emp records for detpno 10 and 20.
-DELETE FROM emp WHERE deptno = 10 or deptno = 20;
+delete from emp where deptno = 10 or deptno = 20;
 --46) Delete all employees those are not getting any commission.
-DELETE FROM emp WHERE comm IS NULL;
+delete from emp where comm IS NULL;
 --47) Delete the employees where employee salary is greater than average salary of his/her department.
-DELETE FROM emp WHERE sal>(SELECT avg(sal) FROM emp GROUP BY deptno);
+delete from emp where sal>(select avg(sal) from emp GROUP BY deptno);
 --48) Rename the employee name JONES to ANDY
-UPDATE emp SET ename = 'ANDY' WHERE ename='JONES';
+update emp SET ename = 'ANDY' where ename='JONES';
 --49) Increase the salary 5% for employee those who are earning commission less then 1000
-UPDATE emp SET sal=(sal+(sal*0.05)) WHERE comm<1000;
+update emp SET sal=(sal+(sal*0.05)) where comm<1000;
 --50) Increase 100$ for employee who is making more then averge salary of his department.
-UPDATE emp SET sal=(sal+100) WHERE sal>(SELECT AVG(sal) FROM emp);
+update emp SET sal=(sal+100) where sal>(SELECT avg(sal) from emp);
 --51) Increase 1% salary for employee who is making lowest salary in dept 10
-UPDATE emp SET sal=(sal+(sal*0.01)) WHERE sal=(SELECT MIN(sal) FROM emp WHERE deptno= 10);
+update emp SET sal=(sal+(sal*0.01)) where sal=(select min(sal) from emp where deptno= 10);
 --52) Increase commission 10$ for employees those who are located in NEW YORK.
-UPDATE emp SET comm=(comm+10) WHERE deptno = (SELECT deptno FROM dept WHERE loc = 'NEW YORK') SELECT * FROM emp;
+update emp SET comm=(comm+10) where deptno = (select deptno from dept where loc = 'NEW YORK');
