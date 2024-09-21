@@ -35,6 +35,7 @@ select count(*) from emp;
 --5) Display emp table with salary descending order.
 select * from emp order by sal desc;
 --6) Display first five records in employee table.
+select * from emp where ROWNUM<=5;
 --7) Display all the records in emp table order by ascending deptno, descending salary.
 select * from emp order by deptno asc,sal desc;
 --8) Display all employees those who were joined in year 1981.
